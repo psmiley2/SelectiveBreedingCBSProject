@@ -9,8 +9,9 @@ Average Aggression # → The average aggression of the agents in the simulation.
 
 
 ### Description
-    This project is based on the Russian Fox Farm Experiment. When the simulation starts, there are 100 agents (circles) on the screen. Each agent starts with a randomly generated aggression somewhere between 0 and 1.
-The closer the agent’s aggression is to 0 the more kind it is. The closer the agent’s aggression is to 1, the more aggressive it is. The long green number at the top left of the screen shows the total average aggression for the population of agents. 
+    
+    
+This project is based on the Russian Fox Farm Experiment. When the simulation starts, there are 100 agents (circles) on the screen. Each agent starts with a randomly generated aggression somewhere between 0 and 1. The closer the agent’s aggression is to 0 the more kind it is. The closer the agent’s aggression is to 1, the more aggressive it is. The long green number at the top left of the screen shows the total average aggression for the population of agents. 
 If you click breed for kindness, the kindest 50 agents will be selected to be bred for the next generation. Each of the 50 agents will be paired with another one. These pairs will move towards each other representing that they are mating. These two relatively kind agents will then produce children (with a bit of mutation mixed in). These children will then be added to the next generation. Every generation that passes represents a round of mating that occurs. 
 If you click breed for aggression, the same algorithm will be run; however, the agents that breed will be the 50 most aggressive ones.
 This hopefully provides an interactive way to see selective breeding in action. 
