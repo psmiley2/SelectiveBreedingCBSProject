@@ -17,16 +17,17 @@ If you click breed for aggression, the same algorithm will be run; however, the 
 This hopefully provides an interactive way to see selective breeding in action. 
 
 ### Analysis
-    The outcome of this project was a little bit disappointing for me at first, but it revealed something incredibly interesting about selective breeding that I didn’t fully grasp before. 
-    The reason it was disappointing at first was because as you can see, the first round of selective breeding makes the most impact. Then, in order to make a real impact, you have to keep clicking in the opposite direction to wait for mutation to inch up the aggression one way or another. The more I thought about it, the more this makes sense to me. This really highlighted that to make a lot of progress quickly with selective breeding, having a distributed gene pool is super important. If all of the foxes are super aggressive, then selective breeding would still take a really long time to reach kind foxes. You would essentially have to wait for mutation to run its course. 
-    Therefore, if I were to run the Russian Fox Farm experiment myself I would not start with one bunch of foxes from the same place. I would try to get as many different foxes from all over to get as diverse of a population as I can. Then, the impact I can make with selective breeding will be super significant super fast. 
 
+The outcome of this project was a little bit disappointing for me at first, but it revealed something incredibly interesting about selective breeding that I didn’t fully grasp before. 
+The reason it was disappointing at first was because as you can see, the first round of selective breeding makes the most impact. Then, in order to make a real impact, you have to keep clicking in the opposite direction to wait for mutation to inch up the aggression one way or another. The more I thought about it, the more this makes sense to me. This really highlighted that to make a lot of progress quickly with selective breeding, having a distributed gene pool is super important. If all of the foxes are super aggressive, then selective breeding would still take a really long time to reach kind foxes. You would essentially have to wait for mutation to run its course. 
+Therefore, if I were to run the Russian Fox Farm experiment myself I would not start with one bunch of foxes from the same place. I would try to get as many different foxes from all over to get as diverse of a population as I can. Then, the impact I can make with selective breeding will be super significant super fast. 
+    
 ### Code Description
 This code chunk right here determines how the foxes are selected and paired up in the mate for kindness algorithm. 
 First we sort the foxes from kindest to most aggressive
 Then we splice the list so we only take the first half of the sorted list (representing the kinder half of the foxes) 
 Then we shuffle that list of kind foxes and pair them randomly
-
+```
 let sorted = [...this.foxes].sort((a, b) => (a.aggression < b.aggression) ? 1 : -1)
 let survivors = sorted.splice(sorted.length / 2)
 let shuffleKindAgents = this.shuffle(survivors)
@@ -39,11 +40,11 @@ for (let i = 0; i < shuffleKindAgents.length; i+=2) {
       shuffleKindAgents[i+1].target = shuffleKindAgents[i]
       pairs.push([shuffleKindAgents[i], shuffleKindAgents[i+1]])
 }
-
+```
 
 This next code chunk shows how the mating works in the mate for kindness algorithm. 
 For all of the mates that got paired up in the code block above, we take the average of their aggressions, apply a random mutation, and then add the results to the next gene pool.
-
+```
 for (let i = 0; i < pairs.length; i++) {
       let avg = (pairs[i][0].aggression + pairs[i][1].aggression) / 2
       let daughterVal1 = avg + random(-0.01, 0.01)
@@ -51,3 +52,4 @@ for (let i = 0; i < pairs.length; i++) {
            daughters.push(daughterVal1)
            daughters.push(daughterVal2)
 }
+```
